@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>REST API</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            border: 2px solid #0d6efd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card-body a {
+            text-decoration: none;
+            color: #0d6efd;
+        }
+
+        .card-body a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card" style="width: 600px;">
+        <div class="card-header">
+            Bienvenido al Servicio Web
+        </div>
+        <div class="card-body">
+            <p>Accede a la API con Swagger aquí: 
+                <a href="http://localhost:8000/api/ui/" target="_blank">Swagger UI</a>
+            </p>
+            <p>Toda la información de los endpoints se encuentra en: 
+                <a href="http://localhost:8000/api/swagger.json" target="_blank">Swagger en JSON</a>
+            </p>
+        </div>
+        <div class="footer">
+            &copy; 2024 - REST API Service
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

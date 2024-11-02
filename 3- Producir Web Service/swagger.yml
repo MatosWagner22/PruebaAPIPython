@@ -1,0 +1,233 @@
+swagger: "2.0"
+info:
+  description: "API para gestión de películas"
+  version: "1.0.0"
+  title: "API de Películas"
+host: "localhost:8000"
+basePath: "/api"
+schemes:
+  - "http"
+
+paths:
+  /peliculas:
+    get:
+      operationId: peliculas.get_all_peliculas
+      tags:
+        - Películas
+      summary: Leer la lista de Películas
+      description: Obtener toda la lista de películas registradas
+      responses:
+        200:
+          description: Lista de películas obtenida exitosamente
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                titulo:
+                  type: string
+                director:
+                  type: string
+                descripcion:
+                  type: string
+                estreno:
+                  type: boolean
+                genero:
+                  type: string
+                esAnimada:
+                  type: boolean
+                fechaEstreno:
+                  type: string
+                  format: date
+                urlVideo:
+                  type: string
+
+    post:
+      operationId: peliculas.add_pelicula
+      tags:
+        - Películas
+      summary: Agregar una nueva película
+      description: Crear una nueva película y asignar automáticamente su ID
+      parameters:
+        - name: pelicula
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              titulo:
+                type: string
+                description: Título de la película
+              director:
+                type: string
+                description: Director de la película
+              descripcion:
+                type: string
+                description: Descripción de la película
+              estreno:
+                type: boolean
+                description: Indicador de si la película está en estreno
+              genero:
+                type: string
+                description: Género de la película
+              esAnimada:
+                type: boolean
+                description: Indicador de si la película es animada
+              fechaEstreno:
+                type: string
+                format: date
+                description: Fecha de estreno de la película
+              urlVideo:
+                type: string
+                description: URL del trailer de la película
+      responses:
+        201:
+          description: Película agregada exitosamente
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: ID de la película asignado automáticamente
+              titulo:
+                type: string
+              director:
+                type: string
+              descripcion:
+                type: string
+              estreno:
+                type: boolean
+              genero:
+                type: string
+              esAnimada:
+                type: boolean
+              fechaEstreno:
+                type: string
+                format: date
+              urlVideo:
+                type: string
+        400:
+          description: Datos inválidos o incompletos
+
+  /peliculas/{id}:
+    get:
+      operationId: peliculas.get_pelicula
+      tags:
+        - Películas
+      summary: Obtener una película por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID de la película a obtener
+      responses:
+        200:
+          description: Película obtenida exitosamente
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              titulo:
+                type: string
+              director:
+                type: string
+              descripcion:
+                type: string
+              estreno:
+                type: boolean
+              genero:
+                type: string
+              esAnimada:
+                type: boolean
+              fechaEstreno:
+                type: string
+                format: date
+              urlVideo:
+                type: string
+        404:
+          description: Película no encontrada
+
+    put:
+      operationId: peliculas.update_pelicula
+      tags:
+        - Películas
+      summary: Actualizar una película por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID de la película a actualizar
+        - name: pelicula
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              titulo:
+                type: string
+              director:
+                type: string
+              descripcion:
+                type: string
+              estreno:
+                type: boolean
+              genero:
+                type: string
+              esAnimada:
+                type: boolean
+              fechaEstreno:
+                type: string
+                format: date
+              urlVideo:
+                type: string
+      responses:
+        200:
+          description: Película actualizada exitosamente
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              titulo:
+                type: string
+              director:
+                type: string
+              descripcion:
+                type: string
+              estreno:
+                type: boolean
+              genero:
+                type: string
+              esAnimada:
+                type: boolean
+              fechaEstreno:
+                type: string
+                format: date
+              urlVideo:
+                type: string
+        404:
+          description: Película no encontrada
+        400:
+          description: Datos inválidos o incompletos
+
+    delete:
+      operationId: peliculas.delete_pelicula
+      tags:
+        - Películas
+      summary: Eliminar una película por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID de la película a eliminar
+      responses:
+        200:
+          description: Película eliminada exitosamente
+        404:
+          description: Película no encontrada
